@@ -3,28 +3,36 @@ import OptionsContainer from './optionsContainer'
 
 export default class Select2 extends React.Component {
 
-  render() {
-
-    let showOptions = () => {
-      console.log('show the options now!')
+  constructor() {
+    super()
+    this.state = {
+      selected: "Placeholder Text"
     }
+  }
 
-    let options = [
-      { text: 'strawberry', value: 1, selected: true },
-      { text: 'avocado', value: 2, selected: false },
-      { text: 'mango', value: 3, selected: false },
-      { text: 'dragonfruit', value: 4, selected: false },
-      { text: 'lychee', value: 5, selected: false },
-    ]
+  options = [
+    { text: 'Avocado', value: 1, selected: false },
+    { text: 'Banana', value: 2, selected: false },
+    { text: 'Clementines', value: 3, selected: false },
+    { text: 'Dragonfruit', value: 4, selected: false },
+  ]
 
+  handleSelect = e => {
+    this.setState({ selected: e.target.innerText })
+  }
+
+  showOptions = () => {
+    console.log('show the options now!')
+  }
+
+  render() {
     return (
-      <div className='select2'>
-
-        <div id='select2' className='select-text' onClick={() => showOptions()}>
-          {this.props.defaultText}
+      <div className='select2 container'>
+        <div className='select-text' onClick={() => this.showOptions()}>
+          {this.state.selected}
         </div>
 
-        <OptionsContainer list={options} />
+        <OptionsContainer list={this.options} handleSelect={this.handleSelect} />
 
       </div>)
 

@@ -7,7 +7,7 @@ const Option2 = props => {
   let classList = selected ? 'option selected' : 'option'
 
   return (
-    <div className={classList}>
+    <div className={classList} onClick={(e) => props.handleSelect(e)}>
       {text}
     </div >
   )

@@ -5,8 +5,7 @@ const optionsContainer = props => {
 
   return (
     <div className='container'>
-      this is the container?!
-      {props.list.map(option => <Option props={option} key={option.value}/>)}
+      {props.list.map(option => <Option props={option} key={option.value} handleSelect={props.handleSelect}/>)}
     </div>
   )
 }
