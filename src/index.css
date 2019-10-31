@@ -13,10 +13,6 @@ h1, h3 {
   margin-top: 50px;
 }
 
-.select2 {
-  /* margin: 10px; */
-}
-
 .select-text {
   display: flex;
   justify-content: space-between;
@@ -30,6 +26,7 @@ h1, h3 {
 }
 
 .options-list {
+  border-top: 1px solid #999;
   max-height: 30vh;
   overflow: hidden;
   overflow-y: scroll;

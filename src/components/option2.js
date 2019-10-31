@@ -10,9 +10,9 @@ const Option2 = props => {
   }
 
   return (
-    <div className={classList} onClick={(e) => props.handleSelect(e)}>
+    <option className={classList} onClick={(e) => props.handleSelect(e)}>
       {props.text}
-    </div >
+    </option >
   )
 }
 
