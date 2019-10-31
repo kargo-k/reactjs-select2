@@ -1,10 +1,12 @@
 import React from 'react';
 import Option from './option2.js';
+import Search from './search.js';
 
 const optionsContainer = props => {
 
   return (
     <div className='options-list'>
+      <Search/>
       {props.list.map(option => {
         return <Option 
                   selected={props.selected}
