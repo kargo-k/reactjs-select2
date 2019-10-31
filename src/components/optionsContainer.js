@@ -6,7 +6,11 @@ const optionsContainer = props => {
 
   return (
     <div className='options-list'>
-      <Search/>
+      <Search 
+        search={props.search}
+        handleSearch={props.handleSearch}
+      />
+
       {props.list.map(option => {
         return <Option 
                   selected={props.selected}
