@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="demo">
       <h1>Karen Go - Software Engineer</h1>
-      <Select2 />
+      <Select2 defaultText="Select your favorite fruit" />
     </div>
   );
 }
