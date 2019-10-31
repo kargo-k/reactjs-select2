@@ -6,16 +6,16 @@ export default class Select2 extends React.Component {
   constructor() {
     super()
     this.state = {
-      selected: "Select a fruit", // this is placeholder text
+      selected: "Select a fruit", // this is placeholder text before a selection is made
       showOptions: false
     }
   }
 
   options = [
-    { text: 'Avocado', value: 1, selected: false },
-    { text: 'Banana', value: 2, selected: false },
-    { text: 'Clementines', value: 3, selected: false },
-    { text: 'Dragonfruit', value: 4, selected: false },
+    { text: 'Avocado', value: 1 },
+    { text: 'Banana', value: 2 },
+    { text: 'Clementines', value: 3 },
+    { text: 'Dragonfruit', value: 4 },
   ]
 
   // updates the text shown to the selected option
@@ -38,6 +38,7 @@ export default class Select2 extends React.Component {
 
         {this.state.showOptions
           ? <OptionsContainer
+            selected={this.state.selected}
             list={this.options}
             handleSelect={this.handleSelect} />
           : null}
