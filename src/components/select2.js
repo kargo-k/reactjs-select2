@@ -6,7 +6,8 @@ export default class Select2 extends React.Component {
   constructor() {
     super()
     this.state = {
-      selected: "Placeholder Text"
+      selected: "Select a fruit", // this is placeholder text
+      showOptions: false
     }
   }
 
@@ -17,24 +18,30 @@ export default class Select2 extends React.Component {
     { text: 'Dragonfruit', value: 4, selected: false },
   ]
 
+  // updates the text shown to the selected option
   handleSelect = e => {
-    this.setState({ selected: e.target.innerText })
+    this.setState({ selected: e.target.innerText, showOptions: false })
   }
 
-  showOptions = () => {
-    console.log('show the options now!')
+  // toggles showing the options list on click
+  toggleOptions = () => {
+    let prev = this.state.showOptions
+    this.setState({ showOptions: !prev })
   }
 
   render() {
     return (
       <div className='select2 container'>
-        <div className='select-text' onClick={() => this.showOptions()}>
+        <div className='select-text' onClick={this.toggleOptions}>
           {this.state.selected}
         </div>
 
-        <OptionsContainer list={this.options} handleSelect={this.handleSelect} />
+        {this.state.showOptions
+          ? <OptionsContainer
+            list={this.options}
+            handleSelect={this.handleSelect} />
+          : null}
 
       </div>)
-
   }
 }
