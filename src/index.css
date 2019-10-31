@@ -19,6 +19,8 @@ h1 {
 
 .select-text {
   color: gray;
+  display: flex;
+  justify-content: space-between;
 }
 
 .container {

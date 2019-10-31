@@ -29,11 +29,22 @@ export default class Select2 extends React.Component {
     this.setState({ showOptions: !prev })
   }
 
+  closeOptions = e => {
+    if (!e.target.className.includes('select2')) {
+      this.setState({ showOptions: false })
+    }
+  }
+
   render() {
+
+    // closes the option list when anywhere outside the select2 is clicked
+    document.addEventListener('click', this.closeOptions)
+
     return (
-      <div className='select2 container'>
+      <div id='select2' className='select2 container'>
         <div className='select-text' onClick={this.toggleOptions}>
-          {this.state.selected}
+          <div>{this.state.selected}</div>
+          <div>⬇</div>
         </div>
 
         {this.state.showOptions
