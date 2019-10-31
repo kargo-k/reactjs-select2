@@ -7,32 +7,43 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1 {
+h1, h3 {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   text-align: center;
+  margin-top: 50px;
 }
 
 .select2 {
-  border: 1px solid fuchsia;
-  margin: 10px;
+  /* margin: 10px; */
 }
 
 .select-text {
-  color: gray;
   display: flex;
   justify-content: space-between;
+  padding: 6px 12px;
 }
 
 .container {
-  border: 3px solid yellowgreen;
+  border-radius: 6px;
+  border: 1px solid #999;
+  margin: 10px;
+}
+
+.disabled {
+  padding: 10px 12px 6px 12px;
+  font-weight: bold;
 }
 
 .option {
-  border: 1px dotted gainsboro;
-  margin: 0.25rem;
+  padding: 6px 24px;
+}
+
+.option:hover {
+  background: lightseagreen;
+  color: white;
 }
 
 .selected {
-  color: red;
-  background: rebeccapurple;
+  color: black;
+  background: lightgray;
 }
