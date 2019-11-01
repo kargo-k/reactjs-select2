@@ -53,7 +53,7 @@ input.search {
   border: 1px solid #999;
 }
 
-input.search:focus {
+#select2 input.search:focus {
   outline: none;
   border: 0;
   box-shadow: 0 0 3px 3px rgba(32, 178, 170, 0.5);
@@ -85,6 +85,11 @@ input.search:focus {
 
 .multiselect2-search {
   border-top: 0;
+}
+
+#multiselect2, #multiselect2.search:focus {
+  border: 0;
+  outline: none;
 }
 
 span.selected-option {

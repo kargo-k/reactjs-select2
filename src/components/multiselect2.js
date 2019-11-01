@@ -72,7 +72,8 @@ export default class Multiselect2 extends React.Component {
 
           {this.state.selected.map(val => <SelectedOption
             key={this.state.selected.indexOf(val)}
-            text={val} />)
+            text={val}
+            onClick={this.deselect} />)
           }
 
           <input

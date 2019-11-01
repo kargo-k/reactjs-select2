@@ -1,6 +1,7 @@
 import React from 'react';
 import List from './list';
 import Search from './search';
+import SelectedOption from './selectedOption'
 
 export default class Select2 extends React.Component {
 
@@ -10,7 +11,8 @@ export default class Select2 extends React.Component {
       selected: "Select an Option Below:",
       show: false,
       search: "",
-      showOptions: null
+      showOptions: [],
+      multiSelected: []
     }
   }
 
@@ -39,8 +41,19 @@ export default class Select2 extends React.Component {
         selected: e.target.innerText,
         show: false,
         search: "",
-        showOptions: null
+        showOptions: []
       })
+    }
+  }
+
+  // for multi select
+  handleMultiSelect = e => {
+    let selectedValues = this.state.multiSelected
+
+    // only adds the target value if it is not found in the already selected values
+    if (selectedValues.indexOf(e.target.value) === -1) {
+      selectedValues.push(e.target.value)
+      this.setState({ multiSelected: selectedValues })
     }
   }
 
@@ -61,7 +74,7 @@ export default class Select2 extends React.Component {
       this.setState({
         show: false,
         search: "",
-        showOptions: null
+        showOptions: []
       })
     }
   }
@@ -74,35 +87,68 @@ export default class Select2 extends React.Component {
     })
   }
 
-
   render() {
     // closes the option list when anywhere outside the select2 is clicked
     document.addEventListener('click', this.closeOptions)
 
-    return (
-      <div id='select2' className='select2 container'>
-        <div className='select2 select-text' onClick={this.toggleOptions}>
-          <div>{this.state.selected}</div>
-          <div>{this.state.show ? '⬆' : '⬇'}</div>
-        </div>
+    // render for a single select type
+    if (this.props.type === 'single') {
+      return (
+        <div id='select2' className='select2 container'>
+          <div className='select2 select-text' onClick={this.toggleOptions}>
+            <div>{this.state.selected}</div>
+            <div>{this.state.show ? '⬆' : '⬇'}</div>
+          </div>
 
-        {this.state.show
-          ?
-          <React.Fragment>
-            <Search
-              search={this.state.search}
-              handleSearch={this.handleSearch}
-            />
+          {this.state.show
+            ?
+            <React.Fragment>
+              <Search
+                search={this.state.search}
+                handleSearch={this.handleSearch}
+              />
+              <List
+                search={this.state.search}
+                handleSearch={this.handleSearch}
+                selected={this.state.selected}
+                list={this.state.showOptions ? this.state.showOptions : this.state.allOptions}
+                handleSelect={this.handleSelect} />
+            </React.Fragment>
+            : null}
+
+        </div>
+      )
+      // render for a multi select type
+    } else if (this.props.type === 'multi') {
+      return (
+        <div className='multiselect2 container'>
+          <div className='multiselect2-search search-div'>
+
+            {this.state.multiSelected.map(val => <SelectedOption
+              key={this.state.multiSelected.indexOf(val)}
+              text={val}
+              onClick={this.deselect} />)
+            }
+
+            <input
+              id="multiselect2"
+              className='multiselect2 search'
+              type="text"
+              onClick={this.toggleOptions}
+              onChange={this.handleSearch} />
+
+          </div>
+
+          {this.state.show ?
             <List
               search={this.state.search}
               handleSearch={this.handleSearch}
               selected={this.state.selected}
-              list={this.state.showOptions ? this.state.showOptions : this.state.allOptions}
-              handleSelect={this.handleSelect} />
-          </React.Fragment>
-          : null}
-
-      </div>
-    )
+              list={this.state.showOptions.length ? this.state.showOptions : this.state.allOptions}
+              handleSelect={this.handleMultiSelect} /> : null
+          }
+        </div>
+      )
+    }
   }
 }
