@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Select2 from './components/select2'
+import Multiselect2 from './components/multiselect2';
 
 function App() {
 
@@ -34,7 +35,7 @@ function App() {
       <Select2 placeholderText="Select A Fruit Below!" optionsList={options} />
 
       <h3>Multi Select2 Dropdown</h3>
-
+      <Multiselect2 optionsList={options} />
     </div>
   );
 }

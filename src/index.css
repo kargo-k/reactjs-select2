@@ -28,7 +28,6 @@ h1, h3 {
 
 .options-list {
   /* position: absolute; */
-  border-top: 1px solid #999;
   background: white;
   max-height: 30vh;
   overflow-y: scroll;
@@ -38,6 +37,7 @@ h1, h3 {
   padding: 6px;
   display: flex;
   justify-content: center;
+  border-top: 1px solid #999;
 }
 
 input.search {
@@ -49,6 +49,8 @@ input.search {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 1em;
+  border-radius: 6px;
+  border: 1px solid #999;
 }
 
 input.search:focus {
@@ -74,4 +76,13 @@ input.search:focus {
 .selected {
   color: black;
   background: lightgray;
+}
+
+.multiselect2-container {
+  margin: 0;
+  padding: 0;
+}
+
+.multiselect2-search {
+  border-top: 0;
 }

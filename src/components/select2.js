@@ -1,5 +1,6 @@
 import React from 'react';
-import List from './list'
+import List from './list';
+import Search from './search';
 
 export default class Select2 extends React.Component {
 
@@ -87,12 +88,19 @@ export default class Select2 extends React.Component {
         </div>
 
         {this.state.show
-          ? <List
-            search={this.state.search}
-            handleSearch={this.handleSearch}
-            selected={this.state.selected}
-            list={this.state.showOptions ? this.state.showOptions : this.state.allOptions}
-            handleSelect={this.handleSelect} />
+          ?
+          <React.Fragment>
+            <Search
+              search={this.state.search}
+              handleSearch={this.handleSearch}
+            />
+            <List
+              search={this.state.search}
+              handleSearch={this.handleSearch}
+              selected={this.state.selected}
+              list={this.state.showOptions ? this.state.showOptions : this.state.allOptions}
+              handleSelect={this.handleSelect} />
+          </React.Fragment>
           : null}
 
       </div>
