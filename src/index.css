@@ -99,10 +99,10 @@ span.selected-option {
   color: white;
   display: flex;
   align-items: center;
-  padding: 3px;
+  padding: 5px 8px;
   margin: 0 3px;
 }
 
 span.remove {
-  margin-right: 3px;
+  margin-right: 5px;
 }

@@ -39,7 +39,7 @@ function App() {
       <h3>Multi Select2 Dropdown</h3>
       <Select2
         type="multi"
-        placeholderText="Select A Fruit Below!"
+        placeholderText="Select your favorite fruits: "
         optionsList={options} />
 
     </div>

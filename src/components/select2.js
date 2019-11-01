@@ -8,11 +8,10 @@ export default class Select2 extends React.Component {
   constructor() {
     super()
     this.state = {
-      selected: "Select an Option Below:",
+      selected: [],
       show: false,
       search: "",
       showOptions: [],
-      multiSelected: []
     }
   }
 
@@ -38,22 +37,22 @@ export default class Select2 extends React.Component {
   handleSelect = e => {
     if (!e.target.className.includes('disabled')) {
       this.setState({
-        selected: e.target.innerText,
+        selected: [e.target.innerText],
         show: false,
         search: "",
-        showOptions: []
+        showOptions: this.state.allOptions
       })
     }
   }
 
   // for multi select
   handleMultiSelect = e => {
-    let selectedValues = this.state.multiSelected
+    let selectedValues = this.state.selected
 
     // only adds the target value if it is not found in the already selected values
     if (selectedValues.indexOf(e.target.value) === -1) {
       selectedValues.push(e.target.value)
-      this.setState({ multiSelected: selectedValues })
+      this.setState({ selected: selectedValues }, this.focusSearch)
     }
   }
 
@@ -73,8 +72,7 @@ export default class Select2 extends React.Component {
     if (!e.target.className.includes('select2')) {
       this.setState({
         show: false,
-        search: "",
-        showOptions: []
+        search: ""
       })
     }
   }
@@ -82,8 +80,9 @@ export default class Select2 extends React.Component {
   componentDidMount() {
     // if no placeholder text is defined, displays "Select an Option Below"
     this.setState({
-      selected: this.props.placeholderText ? this.props.placeholderText : "Select an Option Below",
-      allOptions: this.props.optionsList
+      selected: this.props.placeholderText && this.props.type === 'single' ? [this.props.placeholderText] : [],
+      allOptions: this.props.optionsList,
+      showOptions: this.props.optionsList
     })
   }
 
@@ -124,8 +123,8 @@ export default class Select2 extends React.Component {
         <div className='multiselect2 container'>
           <div className='multiselect2-search search-div'>
 
-            {this.state.multiSelected.map(val => <SelectedOption
-              key={this.state.multiSelected.indexOf(val)}
+            {this.state.selected.map(val => <SelectedOption
+              key={this.state.selected.indexOf(val)}
               text={val}
               onClick={this.deselect} />)
             }
