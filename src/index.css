@@ -86,3 +86,18 @@ input.search:focus {
 .multiselect2-search {
   border-top: 0;
 }
+
+span.selected-option {
+  background: lightseagreen;
+  border-radius: 6px;
+  border: 1px solid seagreen;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  margin: 0 3px;
+}
+
+span.remove {
+  margin-right: 3px;
+}

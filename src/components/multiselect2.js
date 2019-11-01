@@ -1,5 +1,6 @@
 import React from 'react';
 import List from './list';
+import SelectedOption from './selectedOption'
 
 export default class Multiselect2 extends React.Component {
 
@@ -29,6 +30,7 @@ export default class Multiselect2 extends React.Component {
   handleSelect = e => {
     let selectedValues = this.state.selected
     selectedValues.push(e.target.value)
+    console.log(this.state.selected)
     this.setState({ selected: selectedValues })
   }
 
@@ -38,7 +40,6 @@ export default class Multiselect2 extends React.Component {
 
     // if there are no results, displays "No Results Found"
     if (!showList.length) {
-      console.log('showlist is empty')
       this.setState({
         search: e.target.value,
         showOptions: [{ text: "No Results Found", value: null }]
@@ -68,6 +69,12 @@ export default class Multiselect2 extends React.Component {
     return (
       <div className='multiselect2 container'>
         <div className='multiselect2-search search-div'>
+
+          {this.state.selected.map(val => <SelectedOption
+            key={this.state.selected.indexOf(val)}
+            text={val} />)
+          }
+
           <input
             id="multiselect2"
             className='multiselect2 search'

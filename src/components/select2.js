@@ -20,7 +20,6 @@ export default class Select2 extends React.Component {
 
     // if there are no results, displays "No Results Found"
     if (!showList.length) {
-      console.log('showlist is empty')
       this.setState({
         search: e.target.value,
         showOptions: [{ text: "No Results Found", value: null }]
