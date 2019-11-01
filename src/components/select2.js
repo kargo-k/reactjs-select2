@@ -65,12 +65,14 @@ export default class Select2 extends React.Component {
     this.setState({ show: !prev }, this.focusSearch)
   }
 
+  // focuses on the input field when the options are shown
   focusSearch = () => {
     if (this.state.show) {
       document.querySelector('input').focus()
     }
   }
 
+  // close options and clears the input field and resets the options list to all of the options
   closeOptions = e => {
     if (!e.target.className.includes('select2')) {
       this.setState({
@@ -82,6 +84,7 @@ export default class Select2 extends React.Component {
     }
   }
 
+  // deselect for the multi select
   deselect = e => {
     if (e.keyCode === 8 && this.state.search === "" && this.state.selected.length) {
       let prev = this.state.selected
@@ -95,7 +98,6 @@ export default class Select2 extends React.Component {
   }
 
   componentDidMount() {
-    // if no placeholder text is defined, displays "Select an Option Below"
     this.setState({
       selected: this.props.placeholderText && this.props.type === 'single' ? [this.props.placeholderText] : [],
       allOptions: this.props.optionsList,
@@ -140,6 +142,7 @@ export default class Select2 extends React.Component {
         <div className='multiselect2 container'>
           <div className='multiselect2-search search-div'>
 
+            {/* renders the selected values to the left of the input field */}
             {this.state.selected.map(val => <SelectedOption
               key={this.state.selected.indexOf(val)}
               text={val}
