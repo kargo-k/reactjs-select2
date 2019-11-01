@@ -17,10 +17,12 @@ export default class Select2 extends React.Component {
 
   handleSearch = e => {
     // filters the list of options to include the search text
-    let showList = this.state.allOptions.filter(opt => opt.text.toLowerCase().includes(e.target.value.toLowerCase()))
+    let showList = this.state.allOptions.filter(opt => opt.text.toLowerCase().includes(e.target.value.toLowerCase()) && opt.value)
 
     // if there are no results, displays "No Results Found"
-    if (!showList.length) {
+    if (e.target.value === "") {
+      this.setState({ showOptions: this.props.optionsList })
+    } else if (!showList.length) {
       this.setState({
         search: e.target.value,
         showOptions: [{ text: "No Results Found", value: null }]
@@ -73,17 +75,19 @@ export default class Select2 extends React.Component {
     if (!e.target.className.includes('select2')) {
       this.setState({
         show: false,
-        search: ""
+        search: "",
+        showOptions: this.props.optionsList
       })
+      document.querySelector('input').value = ""
     }
   }
 
   deselect = e => {
-    if (e.keyCode === 8 && this.state.search === "") {
+    if (e.keyCode === 8 && this.state.search === "" && this.state.selected.length) {
       let prev = this.state.selected
       prev.pop()
       this.setState({ selected: prev })
-    } else {
+    } else if (e.target.className === 'remove') {
       let prev = this.state.selected
       prev.splice(prev.indexOf(e.target.parentElement.children[1].innerText), 1)
       this.setState({ selected: prev })
