@@ -6,9 +6,6 @@ const Option2 = props => {
   if (props.value === null) {
     classList = 'select2 disabled'
   } else {
-    // classList = props.selected === props.text ? 'select2 option selected' : 'select2 option'
-    console.log('these are selected', props.selected);
-    console.log(props.text);
     classList = props.selected.includes(props.text) ? 'select2 option selected' : 'select2 option'
   }
 

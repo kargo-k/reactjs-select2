@@ -77,6 +77,14 @@ export default class Select2 extends React.Component {
     }
   }
 
+  deselect = e => {
+    if (e.keyCode === 8 && this.state.search === "") {
+      let prev = this.state.selected
+      prev.pop()
+      this.setState({ selected: prev })
+    }
+  }
+
   componentDidMount() {
     // if no placeholder text is defined, displays "Select an Option Below"
     this.setState({
@@ -134,7 +142,8 @@ export default class Select2 extends React.Component {
               className='multiselect2 search'
               type="text"
               onClick={this.toggleOptions}
-              onChange={this.handleSearch} />
+              onChange={this.handleSearch}
+              onKeyDown={this.deselect} />
 
           </div>
 
