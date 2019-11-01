@@ -46,7 +46,9 @@ export default class Select2 extends React.Component {
     if (!e.target.className.includes('disabled')) {
       this.setState({
         selected: e.target.innerText,
-        show: false
+        show: false,
+        search: "",
+        showOptions: null
       })
     }
   }
@@ -54,7 +56,13 @@ export default class Select2 extends React.Component {
   // toggles showing the options list on click
   toggleOptions = () => {
     let prev = this.state.show
-    this.setState({ show: !prev })
+    this.setState({ show: !prev }, this.focusSearch)
+  }
+
+  focusSearch = () => {
+    if (this.state.show) {
+      document.querySelector('input').focus()
+    }
   }
 
   closeOptions = e => {
