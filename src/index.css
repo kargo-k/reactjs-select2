@@ -27,9 +27,10 @@ h1, h3 {
 }
 
 .options-list {
+  /* position: absolute; */
   border-top: 1px solid #999;
+  background: white;
   max-height: 30vh;
-  overflow: hidden;
   overflow-y: scroll;
 }
 

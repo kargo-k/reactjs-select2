@@ -16,6 +16,8 @@ export default class Select2 extends React.Component {
   handleSearch = e => {
     // filters the list of options to include the search text
     let showList = this.state.allOptions.filter(opt => opt.text.toLowerCase().includes(e.target.value.toLowerCase()))
+
+    // if there are no results, displays "No Results Found"
     if (!showList.length) {
       console.log('showlist is empty')
       this.setState({
@@ -65,8 +67,9 @@ export default class Select2 extends React.Component {
   }
 
   componentDidMount() {
+    // if no placeholder text is defined, displays "Select an Option Below"
     this.setState({
-      selected: this.props.defaultText,
+      selected: this.props.placeholderText ? this.props.placeholderText : "Select an Option Below",
       allOptions: this.props.optionsList
     })
   }
