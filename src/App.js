@@ -31,9 +31,16 @@ function App() {
     <div className="demo">
       <h1>Karen Go - Software Engineer</h1>
       <h3>Single Select2 Dropdown</h3>
-      <Select2 placeholderText="Select A Fruit Below!" optionsList={options} />
+      <Select2
+        type="single"
+        placeholderText="Select A Fruit Below!"
+        optionsList={options} />
 
       <h3>Multi Select2 Dropdown</h3>
+      <Select2
+        type="multi"
+        placeholderText="Select your favorite fruits: "
+        optionsList={options} />
 
     </div>
   );
