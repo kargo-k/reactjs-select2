@@ -1,5 +1,5 @@
 import React from 'react';
-import OptionsContainer from './optionsContainer'
+import List from './list'
 
 export default class Select2 extends React.Component {
 
@@ -76,7 +76,6 @@ export default class Select2 extends React.Component {
   }
 
   render() {
-
     // closes the option list when anywhere outside the select2 is clicked
     document.addEventListener('click', this.closeOptions)
 
@@ -90,7 +89,7 @@ export default class Select2 extends React.Component {
           </div>
 
           {this.state.show
-            ? <OptionsContainer
+            ? <List
               search={this.state.search}
               handleSearch={this.handleSearch}
               selected={this.state.selected}
