@@ -78,7 +78,7 @@ export default class Select2 extends React.Component {
         <div id='select2' className='select2 container'>
           <div className='select2 select-text' onClick={this.toggleOptions}>
             <div>{this.state.selected}</div>
-            <div>⬇</div>
+            <div>{this.state.show ? '⬆' : '⬇'}</div>
           </div>
 
           {this.state.show
