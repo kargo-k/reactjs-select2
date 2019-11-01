@@ -84,7 +84,7 @@ export default class Select2 extends React.Component {
       this.setState({ selected: prev })
     } else {
       let prev = this.state.selected
-      prev.splice(prev.indexOf(e.target.parentElement.children[1].innerText))
+      prev.splice(prev.indexOf(e.target.parentElement.children[1].innerText), 1)
       this.setState({ selected: prev })
     }
   }
