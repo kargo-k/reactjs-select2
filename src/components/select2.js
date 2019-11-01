@@ -43,7 +43,12 @@ export default class Select2 extends React.Component {
 
   // updates the text shown to the selected option
   handleSelect = e => {
-    this.setState({ selected: e.target.innerText, show: false })
+    if (!e.target.className.includes('disabled')) {
+      this.setState({
+        selected: e.target.innerText,
+        show: false
+      })
+    }
   }
 
   // toggles showing the options list on click
@@ -54,7 +59,11 @@ export default class Select2 extends React.Component {
 
   closeOptions = e => {
     if (!e.target.className.includes('select2')) {
-      this.setState({ show: false })
+      this.setState({
+        show: false,
+        search: "",
+        showOptions: null
+      })
     }
   }
 
@@ -67,7 +76,7 @@ export default class Select2 extends React.Component {
       <React.Fragment>
         <h3>Single Select2 Dropdown</h3>
         <div id='select2' className='select2 container'>
-          <div className='select-text' onClick={this.toggleOptions}>
+          <div className='select2 select-text' onClick={this.toggleOptions}>
             <div>{this.state.selected}</div>
             <div>⬇</div>
           </div>

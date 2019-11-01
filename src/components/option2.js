@@ -4,7 +4,7 @@ const Option2 = props => {
 
   let classList
   if (props.value === null) {
-    classList = 'disabled'
+    classList = 'select2 disabled'
   } else {
     classList = props.selected === props.text ? 'select2 option selected' : 'select2 option'
   }

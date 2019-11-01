@@ -5,7 +5,7 @@ import Search from './search.js';
 const optionsContainer = props => {
 
   return (
-    <div className='options-list'>
+    <div className='select2 options-list'>
       <Search 
         search={props.search}
         handleSearch={props.handleSearch}
