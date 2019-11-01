@@ -106,3 +106,7 @@ span.selected-option {
 span.remove {
   margin-right: 5px;
 }
+
+span.remove:hover {
+  cursor: pointer;
+}

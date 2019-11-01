@@ -49,7 +49,8 @@ export default class Select2 extends React.Component {
   handleMultiSelect = e => {
     let selectedValues = this.state.selected
 
-    // only adds the target value if it is not found in the already selected values
+    // only adds the target value if it is not found in the already selected values.  TODO Sort selected vals, but it's also nice to have them added in the order that the user selects :
+
     if (selectedValues.indexOf(e.target.value) === -1) {
       selectedValues.push(e.target.value)
       this.setState({ selected: selectedValues }, this.focusSearch)
@@ -143,6 +144,7 @@ export default class Select2 extends React.Component {
 
             <input
               id="multiselect2"
+              placeholder={this.props.placeholderText}
               className='multiselect2 search'
               type="text"
               onClick={this.toggleOptions}
