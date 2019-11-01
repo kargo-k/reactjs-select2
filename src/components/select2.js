@@ -82,6 +82,10 @@ export default class Select2 extends React.Component {
       let prev = this.state.selected
       prev.pop()
       this.setState({ selected: prev })
+    } else {
+      let prev = this.state.selected
+      prev.splice(prev.indexOf(e.target.parentElement.children[1].innerText))
+      this.setState({ selected: prev })
     }
   }
 
@@ -134,7 +138,7 @@ export default class Select2 extends React.Component {
             {this.state.selected.map(val => <SelectedOption
               key={this.state.selected.indexOf(val)}
               text={val}
-              onClick={this.deselect} />)
+              handleClick={this.deselect} />)
             }
 
             <input
